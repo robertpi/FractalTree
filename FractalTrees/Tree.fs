@@ -18,8 +18,17 @@ let drawTree file =
         let x = length * Math.Sin(direction)
         let y = length * Math.Cos(direction)
         let nextX, nextY = startX + x, startY + y
+        let width = length / 15. 
+        let widthX = width * Math.Cos(direction)
+        let widthY = width * Math.Sin(direction)
+
+        let points = 
+            [| new Point(int (startX - widthX), int (startY - widthY)); 
+               new Point(int (nextX - widthX), int (nextY - widthY)); 
+               new Point(int (nextX + widthX), int (nextY + widthY)); 
+               new Point(int (startX + widthX), int (startY + widthY)) |]
         let pen = new Pen(Color.Black, float32 length / 15.f)
-        g.DrawLine(pen, int startX, int startY, int nextX, int nextY)
+        g.FillClosedCurve(new SolidBrush(Color.Black), points)
         (nextX, nextY)
 
     let largeAngle = Math.PI / 2.4
