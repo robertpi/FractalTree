@@ -1,10 +1,13 @@
 ﻿open System.Diagnostics
+open System.IO
 
 [<EntryPoint>]
 let main argv =
     printfn "Drawing a tree"
     
-    let outPath = @"C:\code\FractalTrees\FractalTrees\tree.jpg"
+    let outfolder = @"C:\code\FractalTrees\FractalTrees\results"
+    if Directory.Exists outfolder |> not then Directory.CreateDirectory outfolder |> ignore
+    let outPath = Path.Combine(outfolder, "tree.jpg")
     
     Tree.drawTree outPath
     

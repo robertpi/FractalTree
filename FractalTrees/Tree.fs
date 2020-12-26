@@ -9,6 +9,7 @@ let drawTree file =
     let rnd = new Random()
     let img = new Bitmap(size, size)
     use g = Graphics.FromImage(img)
+    g.SmoothingMode <- SmoothingMode.AntiAlias;
     let pen = new Pen(Color.Black, 1.f)
     g.FillRectangle(new SolidBrush(Color.White), 0, 0, size, size)
     g.DrawRectangle(new Pen(Color.Black, 1.f), 0, 0, size - 1, size - 1)
