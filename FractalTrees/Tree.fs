@@ -8,7 +8,6 @@ let size = 1000
 let drawTree file = 
     let rnd = new Random()
     let img = new Bitmap(size, size)
-    let pen = new Pen(Color.Black, 1.f)
     use g = Graphics.FromImage(img)
     g.SmoothingMode <- SmoothingMode.HighQuality;
     g.FillRectangle(new SolidBrush(Color.White), 0, 0, size, size)
@@ -19,6 +18,7 @@ let drawTree file =
         let x = length * Math.Sin(direction)
         let y = length * Math.Cos(direction)
         let nextX, nextY = startX + x, startY + y
+        let pen = new Pen(Color.Black, float32 length / 15.f)
         g.DrawLine(pen, int startX, int startY, int nextX, int nextY)
         (nextX, nextY)
 
